@@ -1,22 +1,11 @@
 # Spamadur Gogn (Prophet. Data)
 A data science tool kit to quickly perform common data science tasks. 
 
-## Sja
-Simple object detection inference with pre-trained faster-rcnn r50 fpn coco model
+## Module 1: Sja (Icelandic for "see")
+### Built
+1. Simple object detection inference with pre-trained faster-rcnn r50 fpn coco model (torchvision)
 
-### Models
-
-#### Detection
-- ID
-- Name
-- Model Name
-- Status
-- Image IDs
-
-#### Image
-- ID
-- Detection ID
-- Image
-- Predicted Image
-
-#### PyTorchModel
+### To-be-built
+1. Image classification inference with different torchvision models
+2. Training a custom image classifier
+3. Training a custom object detector
