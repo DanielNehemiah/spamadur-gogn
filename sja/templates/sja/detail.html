@@ -1,0 +1,13 @@
+<h1>{{ detection.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p>{{ detection.model_name }}</p>
+
+<p>{{ detection.status }}</p>
+
+
+<form action="{% url 'sja:delete_detection' detection.id %}" method="post">
+	 {% csrf_token %} 
+    <input type="submit" value="Delete Detection">
+</form>

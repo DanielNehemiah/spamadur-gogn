@@ -1,0 +1,15 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'sja/style.css' %}">
+
+{% if detection_list %}
+    <ul>
+    {% for detection in detection_list %}
+        <li><a href="{% url 'sja:detail' detection.id %}">{{ detection.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No detections are available.</p>
+{% endif %}
+
+<a href="{% url 'sja:createDetection' %}">Create new detection</a>
