@@ -18,10 +18,10 @@
 
 			<!-- Header -->
 				<header id="header" class="alt">
-					<!-- <h1><a href="{% url 'sja:index' %}">Spámaður. Gögn</a></h1> -->
+					<h1><a href="{% url 'sja:index' %}">Spámaður. Gögn - Sjá</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="{% url 'sja:about_sja' %}">What all can Sjá do?</a></li>
+							<!-- <li><a href="index.html">Home</a></li> -->
 							<!-- <li>
 								<a href="#" class="icon solid fa-angle-down">Layouts</a>
 								<ul>
@@ -46,14 +46,75 @@
 
 			<!-- Banner -->
 				<section id="banner">
-					<h2>Sjá (See)</h2>
-					<p>The vision side of Spámaður. Gögn</p>
-					<ul class="actions special">
-						<li><a class="button" href="{% url 'sja:detections' %}">Object Detection</a></li>
+					<h2>What all can Sjá do?</h2>
+					<!-- <p>The vision side of Spámaður. Gögn, lets you perform object detection inference (predicting COCO classes)</p> -->
+					<!-- <ul class="actions special"> -->
+						
 						<!-- <li><a href="{% url 'sja:about_sja' %}" class="button">What all can Sjá do?</a></li> -->
-					</ul>
+					<!-- </ul> -->
 				</section>
 
+			<!-- Main -->
+				<section id="main" class="container">
+
+					<!-- <section class="box special">
+						<header class="major">
+							<h2>Introducing the ultimate mobile app
+							<br />
+							for doing stuff with your phone</h2>
+							<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare<br />
+							adipiscing nunc adipiscing. Condimentum turpis massa.</p>
+						</header>
+						<span class="image featured"><img src="{% static 'sja/images/pic01.jpg' %}" alt="" /></span>
+					</section> -->
+
+					<section class="box special">
+						<div class="features-row">
+							<section>
+								<span class="icon solid major fa-bolt accent2"></span>
+								<h3>Object Detection</h3>
+								<p>The object detection module of Sjá has a pre-trained model capable of finding objects in image(s). The types of objects that it can find are 
+									<ol style="text-align: left">
+									{% for class in OD_CLASSES %}
+									<li>{{ class }}</li>
+									{% endfor %}
+									</ol>
+								</p>
+							</section>
+							<!-- <section>
+								<span class="icon solid major fa-chart-area accent3"></span>
+								<h3>Ipsum dolor</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+							</section> -->
+						</div>
+						<!-- <div class="features-row">
+							<section>
+								<span class="icon solid major fa-cloud accent4"></span>
+								<h3>Sed feugiat</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+							</section>
+							<section>
+								<span class="icon solid major fa-lock accent5"></span>
+								<h3>Enim phasellus</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+							</section> -->
+						</div>
+					</section>
+					
+						<!-- <div class="col-6 col-12-narrower">
+
+							<section class="box special">
+								<span class="image featured"><img src="{% static 'sja/images/pic03.jpg' %}" alt="" /></span>
+								<h3>Accumsan integer</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+								<ul class="actions special">
+									<li><a href="#" class="button alt">Learn More</a></li>
+								</ul>
+							</section>
+
+						</div> -->
+					<!-- </div> -->
+				</section>
 
 			<!-- CTA -->
 				<section id="cta">
@@ -62,6 +123,7 @@
 					<p>This app is still a work in progress, but you can expect some pretty cool things coming soon :)</p>
 					<p>If you're wondering why the app has a weird name, I'll give you a hint; it's all Icelandic.</p>
 					<h2><a href="https://github.com/DanielNehemiah/spamadur_gogn" class="icon brands fa-github"><span class="label">Github</span></a></h2>
+					<a class="button" href="{% url 'sja:create_detection' %}">Make new detection</a>
 					<!-- <form>
 						<div class="row gtr-50 gtr-uniform">
 							<div class="col-8 col-12-mobilep">

@@ -111,19 +111,31 @@ def run_detection(detection):
 	detection.save()
 	connection.close()
 
-class IndexView(generic.ListView):
-    template_name = 'sja/index.html'
+class DetectionsView(generic.ListView):
+    template_name = 'sja/detections.html'
 
     def get_queryset(self):
         """Return the last five published questions."""
         return Detection.objects.all()
 
-class DetailView(generic.DetailView):
-    model = Detection
-    template_name = 'sja/detail.html'
+# class DetailView(generic.DetailView):
+#     model = Detection
+#     template_name = 'sja/detail.html'
 
+def detail_detection(request, pk):
+    detection = get_object_or_404(Detection, pk=pk)
+    context = {
+        'detection': detection,
+        'images': detection.image_set.all(),
+        'image_count': detection.image_set.count()
+    }
 
-def createDetection(request):
+    return render(request, 'sja/detail.html', context)
+
+def index(request):
+  return render(request, 'sja/index.html')
+
+def create_detection(request):
 	form = DetectionForm()
 	if request.method == 'POST':
 		form = DetectionForm(request.POST, request.FILES)
@@ -139,4 +151,8 @@ def delete_detection(request, pk):
 	detection= get_object_or_404(Detection, pk=pk)
 	if request.method=='POST':
 		detection.delete()
-		return HttpResponseRedirect(reverse('sja:index'))
+		return HttpResponseRedirect(reverse('sja:detections'))
+
+def about_sja(request):
+  context = {'OD_CLASSES': ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus','train', 'truck', 'boat', 'traffic light', 'fire hydrant',  'stop sign','parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow','elephant', 'bear', 'zebra', 'giraffe',  'backpack', 'umbrella',  'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball','kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket','bottle',  'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl','banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza','donut', 'cake', 'chair', 'couch', 'potted plant', 'bed',  'dining table',  'toilet',  'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone','microwave', 'oven', 'toaster', 'sink', 'refrigerator',  'book','clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']}
+  return render(request, 'sja/about.html', context)

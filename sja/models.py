@@ -1,7 +1,6 @@
 import datetime, os
 
 from django.core.validators import FileExtensionValidator
-
 from django.db import models
 from django.forms import ModelForm
 from django.utils import timezone
